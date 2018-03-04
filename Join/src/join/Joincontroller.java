@@ -19,7 +19,7 @@ public class Joincontroller extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("goGet!!!!!");
-
+		System.out.println("This is doGet");
 		System.out.println("name : " + req.getParameter("name"));
 		System.out.println("address : " + req.getParameter("address"));
 		doPost(req,resp);
