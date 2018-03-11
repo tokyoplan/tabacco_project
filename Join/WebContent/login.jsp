@@ -6,9 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+
+ 
 <body>
 
+
+
 <form action="Logincontroller" name="login" method="post">
+
     
    아이디 <input type="text" name="id" id="id"> <P>
     

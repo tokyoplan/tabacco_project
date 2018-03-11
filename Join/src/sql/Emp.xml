@@ -14,9 +14,13 @@
       
      <select id="SelectJoin" parameterType="join.JoinDTO" resultType="join.JoinDTO">
      
-     Select * from emp where id=#{id} and pw=#{pw}
+     	Select * from emp where id=#{id} 
      </select>
      
+     <select id="SelectJoinInfo" parameterType="join.JoinDTO" resultType="join.JoinDTO">
+     
+     	Select * from emp where id=#{id} and pw=#{pw}
+     </select>
      
      
     

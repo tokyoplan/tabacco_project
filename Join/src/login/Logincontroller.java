@@ -8,9 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
+import com.mysql.jdbc.StringUtils;
 
 import join.JoinDAO;
 import join.JoinDTO;
+import util.CommonUtils;
 
 /**
  * 
@@ -32,34 +36,46 @@ public class Logincontroller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
 		JoinDTO dto = new JoinDTO();
 		JoinDAO dao = new JoinDAO();
-		String id=req.getParameter("id");
-		String pwd=req.getParameter("pw");
-		
-		dto.setId(id);
-		dto.setPw(pwd);
-		
-		System.out.println(dto);
-		JoinDTO resultDTO = dao.SelectJoin(dto);
-		System.out.println(resultDTO);
-		// Á¶È¸ÇÑ °ªÀ» resultDTO ¿¡ ³Ö´Â´Ù
 
-		if (resultDTO == null) { // °¡Á®¿Ô´Âµ¥ ºñ¾îÀÖÁö ¾Ê´Ù null
-			// Á¶È¸ÇÑ °ªÀÌ ¾øÀ¸¸é ¿ì¸®È¸¿øÀÌ ¾Æ´Ï´Ù .
-			System.out.println("fail");
-			 
-			resp.sendRedirect("login.jsp"); // ²¨³»·Á°í Çß´Âµ¥ ¾È¿¡ µé¾îÀÖ´Ù fail
+		dto.setId(req.getParameter("id"));
+		dto.setPw(req.getParameter("pw"));
+		System.out.println(dto);
+		String logCheck = req.getParameter("id");
+		String logCheck2 = req.getParameter("pw");
+		if(CommonUtils.isEmpty(logCheck) || CommonUtils.isEmpty(logCheck2)){
+
+			req.setAttribute("errorMsg", "Id í˜¹ì€ pwë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
+			req.getRequestDispatcher("error.jsp").forward(req, resp);
+
 		} else {
 
-			System.out.print("success");
+			JoinDTO result=dao.SelectJoinInfo(dto);
+			
+			System.out.println(result);
+			
+			String name=result.getName();
+			int money =result.getMoney();
 
-			resp.sendRedirect("loginview.jsp");
-		}
+			if (CommonUtils.isEmpty(name)) {
+				
+				System.out.println("fail");
+				req.setAttribute("errorMsg", "Id í˜¹ì€ PWê°€ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤");
+				req.getRequestDispatcher("error.jsp").forward(req, resp);
+			} else {
 
-		// LoginviewÀ¸·Î º¸³»ÁÖ±â
-		if (resultDTO == null) {
+				System.out.print("success");
+				req.setAttribute("userName", name);
+				req.setAttribute("money", money);
+				
+				req.getRequestDispatcher("main.jsp").forward(req, resp);
+			}
+
+			//
 
 		}
 	}

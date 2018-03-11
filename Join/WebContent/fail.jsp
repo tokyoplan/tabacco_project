@@ -8,7 +8,7 @@
 </head>
 <body>
 
-실패 시발
+실패 
 
 </body>
 </html>

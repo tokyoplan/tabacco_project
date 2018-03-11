@@ -1,6 +1,7 @@
 package join;
 
 import org.apache.ibatis.session.SqlSession;
+
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import myBatisSetting.SqlMapConfig;
@@ -49,12 +50,15 @@ public class JoinDAO {
 		System.out.println("select" + select.getId());
 		return select;*/
 
-	public JoinDTO SelectJoin(JoinDTO dto){
-		
-		JoinDTO select = null;
- 
-		
+	public JoinDTO SelectJoin(JoinDTO dto){		
+		JoinDTO select = null;	
 		select=sqlsession.selectOne("SelectJoin",dto);	
+		return select;
+	}
+	
+	public JoinDTO SelectJoinInfo(JoinDTO dto){		
+		JoinDTO select = null;		
+		select=sqlsession.selectOne("SelectJoinInfo",dto);	
 		return select;
 	}
 	
