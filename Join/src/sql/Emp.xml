@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="abab">
+
+    <insert id="insertjoin" parameterType="join.JoinDTO">
+   		insert into emp(id,pw,name,email) 
+   		
+   		values(#{id},#{pw},#{name},#{email})
+   </insert>
+
+    
+      
+     <select id="SelectJoin" parameterType="join.JoinDTO" resultType="join.JoinDTO">
+     
+     	Select * from emp where id=#{id} 
+     </select>
+     
+     <select id="SelectJoinInfo" parameterType="join.JoinDTO" resultType="join.JoinDTO">
+     
+     	Select * from emp where id=#{id} and pw=#{pw}
+     </select>
+     
+     
+    
+     
+     <update id="updateJoin" parameterType="join.JoinDTO" >
+     
+     update emp set name=#{name} where id=#{id} and pw=#{pw}
+     <!-- 동적  -->
+     
+      
+     </update>
+     
+     <delete id="deleteJoin" parameterType="join.JoinDTO">
+     
+     delete from emp where id=#{id}
+     
+     </delete>
+
+
+</mapper>
