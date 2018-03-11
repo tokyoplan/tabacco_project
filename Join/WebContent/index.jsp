@@ -8,7 +8,6 @@
 	</head>
 	<body>
 	
-	
 		<button onclick="return location.href='Join.jsp'">Join</button>
 		<button onclick="return location.href='login.jsp'">Login</button>
 		<button onclick="return location.href='/Join/Shoescontroller'">ShoesList</button>

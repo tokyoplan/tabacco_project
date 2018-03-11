@@ -6,7 +6,7 @@
 
 
 <select id="selectShoesPathList" resultType="string">
-
+ 
 select path from shoes
 
 </select>
