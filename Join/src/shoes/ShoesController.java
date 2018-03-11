@@ -21,15 +21,8 @@ public class ShoesController extends HttpServlet {
 	 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
-	}
-	
-	
-
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	 
 		ShoesDAO dao=new ShoesDAO();
-	  
+		  
 		List<String> result=dao.selectShoes();
 		
 		if(result.isEmpty()){
@@ -45,15 +38,13 @@ public class ShoesController extends HttpServlet {
 			req.getRequestDispatcher("main.jsp").forward(req, resp);
 			
 			}
-		
-	//for¹® ¤¼¤¤
-		
-
-		
-		
+	}
 	
-		
-		
+	
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	 
+		doGet(req,resp);
 		
 	}
 
