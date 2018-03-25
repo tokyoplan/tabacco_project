@@ -1,4 +1,4 @@
-package membermodel;
+package src.membermodel;
 
 
 
